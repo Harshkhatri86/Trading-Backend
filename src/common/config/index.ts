@@ -1,5 +1,4 @@
 import path from "path";
-import db from "../../models";
 import { IDBConfig } from "./db";
 
 export interface  IConfig{
