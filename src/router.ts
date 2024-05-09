@@ -8,6 +8,6 @@ server.get('/', (req : Request, res: Response) => {
   res.send('Hello World!')
 })
 
-server.use("/auth" , AuthRouter) ; 
+server.use("/v1/auth" , AuthRouter) ; 
 
 export default server
