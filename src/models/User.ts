@@ -10,8 +10,8 @@ interface UserAttributes {
   password: string;
   phoneNo: string;
   email: string;
-  created_at: Date;
-  updated_at: Date;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 class User extends Model<UserAttributes> implements UserAttributes {
@@ -45,10 +45,10 @@ User.init(
       unique: true,
     },
     password: {
-        type: DataTypes.STRING(64),
+        type: DataTypes.STRING(128),
         allowNull: false , 
         validate: {
-          is: /^[0-9a-f]{64}$/i,
+          is:  /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?/~`-]+$/i,
         },
     },
     email: {
@@ -88,4 +88,4 @@ User.init(
   }
 );
 
-export default User ; 
+export default User ;
