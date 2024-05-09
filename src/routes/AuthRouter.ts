@@ -4,9 +4,6 @@ import { Login , Register} from '../controller/AuthController';
 const router = express.Router() ; 
 
 
-router.post("/login" , Login ) ; 
-
-
 /**
  * @swagger
  * definitions:
@@ -85,5 +82,82 @@ router.post("/login" , Login ) ;
  */
 
 router.post("/register" , Register )
+
+
+
+
+/**
+ * @swagger
+ * /v1/auth/login:
+ *   post:
+ *     summary: Log in a user
+ *     description: Endpoint for user login
+ *     consumes:
+ *       - application/json
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - in: body
+ *         name: body
+ *         description: User credentials for login
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *             userName:
+ *               type: string
+ *             password:
+ *               type: string
+ *     responses:
+ *       '200':
+ *         description: Logged in successfully
+ *         schema:
+ *           type: object
+ *           properties:
+ *             status:
+ *               type: integer
+ *               example: 200
+ *             message:
+ *               type: string
+ *               example: logged in successfully
+ *             data:
+ *               $ref: '#/definitions/User'
+ *       '401':
+ *         description: Unauthorized - Invalid password
+ *         schema:
+ *           type: object
+ *           properties:
+ *             status:
+ *               type: integer
+ *               example: 401
+ *             errorMessage:
+ *               type: string
+ *               example: Invalid password
+ *       '404':
+ *         description: User not found
+ *         schema:
+ *           type: object
+ *           properties:
+ *             status:
+ *               type: integer
+ *               example: 404
+ *             errorMessage:
+ *               type: string
+ *               example: User does not exist
+ *       '500':
+ *         description: Internal Server Error
+ *         schema:
+ *           type: object
+ *           properties:
+ *             status:
+ *               type: integer
+ *               example: 500
+ *             errorMessage:
+ *               type: string
+ *               example: Internal Server Error
+ */
+
+router.post("/login" , Login ) ; 
+
 
 export default router

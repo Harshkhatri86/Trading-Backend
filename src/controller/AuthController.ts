@@ -2,14 +2,28 @@ import { Request, Response } from "express";
 import bcrypt from 'bcrypt'
 import { User } from "../models";
 
-const Login = (req: Request, res: Response) => {
+const Login = async (req: Request, res: Response) => {
   try {
-    res.status(200).json({ message: "logged in successfully" });
+    const {userName , password } = req.body ; 
+    const trimmedUserName = userName.trim() ; 
+    const isExistingUser = await User.findOne({where :{userName : trimmedUserName}}) ;
+    
+    if(!isExistingUser){
+      res.status(404).json({status : 404 , errorMesssage : 'User does not exist'}) ; 
+      return ; 
+    }
+
+    const comparePassword = await bcrypt.compare(password , isExistingUser.password); 
+    if(!comparePassword){
+      res.status(401).json({ status : 401, errorMessage: "Invalid password" });
+      return;
+    } 
+
+    const data = isExistingUser as any ; 
+    data.password = undefined
+    res.status(200).json({status : 200 , message: "logged in successfully", data });
   } catch (error) {
-    console.log(`Error in login controller`);
-    res
-      .status(500)
-      .json({ message: "Internal Server Error", error: `${error}` });
+    res.status(500).json({ status : 500 , errorMessage : `Internal Server Error ${error}`})
   }
 };
 
