@@ -11,15 +11,15 @@ export function generateFileName(fileName : string , width? : number){
     return `${name}_${sufixName}_${width}`
 }
 
-
-export function findMimeTypeConfig(mimetype :string){
-    for(const [key , value] of Object.entries(AVAILABLE_ATTACHMENT_MIMES)){
-        if(value.mimetype.include(mimetype)){
-            return { [key] : value} ; 
-        }
+export function findMimeTypeConfig(mimeType: string) {
+    for (const [key, value] of Object.entries(AVAILABLE_ATTACHMENT_MIMES)) {
+      if (value.mineType.includes(mimeType)) {
+        return { [key]: value };
+      }
     }
-    return null ; 
-}
+    return null;
+  }
+  
 
 export function mb2bytes(mb : number){
     return mb * 1024 * 1024 ; 
