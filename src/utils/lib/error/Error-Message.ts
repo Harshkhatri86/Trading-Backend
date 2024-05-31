@@ -17,4 +17,16 @@ export const CommonErrorMessage = {
     code: status.BAD_REQUEST,
     message: "Bad Request",
   },
+  fileTooLarge: {
+    code: status.BAD_REQUEST,
+    message: "File size too large",
+  },
+  invalidFile: {
+    code: status.BAD_REQUEST,
+    message: "Invalid file",
+  },
+  tooManyFiles: {
+    code: status.BAD_REQUEST,
+    message: "Too many files",
+  },
 };
