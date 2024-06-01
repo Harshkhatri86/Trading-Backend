@@ -3,5 +3,6 @@ declare namespace Express {
     userId?: string | any;
     projectId?: string | any;
     storyId?: string | any;
+    token? : string | any ; 
   }
 }

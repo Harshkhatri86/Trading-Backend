@@ -1,5 +1,6 @@
 import express from "express";
 import { uploadSingle } from "../controller/StorageController";
+import { verifyToken } from "../utils/Authentication/jwt";
 
 const router = express.Router();
 /**
@@ -23,6 +24,11 @@ const router = express.Router();
  *         required: true
  *         schema:
  *           type: string
+ *       - in : header
+ *         name: authorization
+ *         description: token 
+ *         required : true 
+ *         type : string  
  *       - in: formData
  *         name: uploads
  *         description: uploads
@@ -37,6 +43,6 @@ const router = express.Router();
  *         description: Internal server error
  */
 
-router.post("/upload", uploadSingle);
+router.post("/upload", verifyToken, uploadSingle);
 
 export default router;
