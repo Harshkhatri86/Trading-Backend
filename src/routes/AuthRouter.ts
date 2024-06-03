@@ -1,5 +1,8 @@
 import express from 'express'
 import { Login , Register} from '../controller/AuthController';
+import { validation } from '../helper';
+import { userValidationSchema } from '../helper/LoginValidation';
+import { registerValidationSchema } from '../helper/RegisterValidation';
 
 const router = express.Router() ; 
 
@@ -81,7 +84,7 @@ const router = express.Router() ;
  *               example: Internal Server Error
  */
 
-router.post("/register" , Register )
+router.post("/register" , validation(registerValidationSchema), Register )
 
 
 
@@ -157,7 +160,7 @@ router.post("/register" , Register )
  *               example: Internal Server Error
  */
 
-router.post("/login" , Login ) ; 
+router.post("/login" , validation(userValidationSchema), Login ) ; 
 
 
 export default router

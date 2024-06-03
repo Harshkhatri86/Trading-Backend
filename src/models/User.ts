@@ -69,13 +69,13 @@ User.init(
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      defaultValue: DataTypes.NOW,
     },
     updated_at: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      onUpdate: "CURRENT_TIMESTAMP", // Automatically update the field on update
+      defaultValue:  DataTypes.NOW,
+      onUpdate: 'CASCADE', // Automatically update the field on update
     },
   },
   {
