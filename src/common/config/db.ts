@@ -21,7 +21,7 @@ export default{
         user : getOsEnv("DB_USER") , 
         password : getOsEnv("DB_PASS") , 
         db : getOsEnv("DB_NAME"), 
-        host : getOsEnv("DB_HOSt") , 
+        host : getOsEnv("DB_HOST") , 
         port : toNumber(getOsEnv("DB_PORT"))
     }, 
     enableLog : toBool(getOsEnv("DB_ENABLE_LOGGING"))
