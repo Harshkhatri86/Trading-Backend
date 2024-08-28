@@ -4,7 +4,7 @@ import { Sequelize , DataTypes , Model} from "sequelize";
 import { sequelizeConnection } from "../common/db/init";
 
 interface StockAttributes{
-    id : string ; 
+    id?: string ; 
     stock_name : string ; 
     company_name : string; 
     current_price : string ; 
